@@ -104,12 +104,19 @@
 }
 
 .mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: rgba(8, 11, 18, 0.98);
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 2rem;
-  background: rgba(8, 11, 18, 0.97);
-  border-top: 1px solid var(--border);
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  z-index: 99;
+  animation: fadeIn 0.3s ease;
 }
 
 .mobile-link {
@@ -125,6 +132,18 @@
   transition: color 0.2s;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .mobile-link:hover {
   color: var(--neon-cyan);
 }
@@ -136,5 +155,9 @@
 
   .hamburger {
     display: flex;
+  }
+
+  .nav-inner {
+    padding: 0 1rem;
   }
 }
