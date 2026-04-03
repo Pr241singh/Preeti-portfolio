@@ -60,7 +60,7 @@ export default function Certifications() {
               </div>
               <h3 className="cert-title">{cert.title}</h3>
               <p className="cert-subtitle">{cert.subtitle}</p>
-              <p className="cert-issuer">— {cert.issuer}</p>
+              <p className="cert-issuer"> {cert.issuer}</p>
             </div>
           ))}
         </div>

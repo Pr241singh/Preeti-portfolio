@@ -51,7 +51,7 @@ export default function Hero() {
           </div>
 
           <p className="hero-bio">
-            Full-Stack Developer building scalable MERN stack applications — real-time systems,
+            Full-Stack Developer building scalable MERN stack applications real-time systems,
             SaaS tools, and automation workflows. Currently crafting responsive UIs at{' '}
             <span className="highlight">Beacon Health</span>. Oracle Cloud AI Certified &amp;
             Infosys Pragati Scholar.

@@ -2,7 +2,6 @@
   padding: 6rem 2rem;
   background: var(--bg-primary);
 }
-
 .experience-inner {
   max-width: 900px;
   margin: 0 auto;
@@ -26,28 +25,16 @@
   align-items: center;
   padding-top: 6px;
 }
-
 .exp-dot {
-  width: 14px;
-  height: 14px;
+  width: 14px; height: 14px;
   border-radius: 50%;
   border: 2px solid;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
 }
-
-.exp-dot--cyan {
-  border-color: var(--neon-cyan);
-  background: rgba(0, 245, 255, 0.2);
-  box-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
-}
-
-.exp-dot--green {
-  border-color: var(--neon-green);
-  background: rgba(0, 255, 136, 0.2);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
-}
+.exp-dot--cyan { border-color: var(--neon-cyan); background: rgba(0,245,255,0.2); box-shadow: 0 0 10px rgba(0,245,255,0.4); }
+.exp-dot--green { border-color: var(--neon-green); background: rgba(0,255,136,0.2); box-shadow: 0 0 10px rgba(0,255,136,0.4); }
 
 .exp-line {
   width: 1px;
@@ -64,14 +51,8 @@
   margin-bottom: 2rem;
   transition: border-color 0.3s;
 }
-
-.exp-item--cyan .exp-card:hover {
-  border-color: rgba(0, 245, 255, 0.3);
-}
-
-.exp-item--green .exp-card:hover {
-  border-color: rgba(0, 255, 136, 0.3);
-}
+.exp-item--cyan .exp-card:hover { border-color: rgba(0,245,255,0.3); }
+.exp-item--green .exp-card:hover { border-color: rgba(0,255,136,0.3); }
 
 .exp-card-top {
   display: flex;
@@ -89,7 +70,6 @@
   color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
-
 .exp-company {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -102,7 +82,6 @@
   align-items: flex-end;
   gap: 0.4rem;
 }
-
 .exp-badge {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -111,18 +90,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-
-.exp-badge--cyan {
-  background: rgba(0, 245, 255, 0.1);
-  color: var(--neon-cyan);
-  border: 1px solid rgba(0, 245, 255, 0.3);
-}
-
-.exp-badge--green {
-  background: rgba(0, 255, 136, 0.1);
-  color: var(--neon-green);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-}
+.exp-badge--cyan { background: rgba(0,245,255,0.1); color: var(--neon-cyan); border: 1px solid rgba(0,245,255,0.3); }
+.exp-badge--green { background: rgba(0,255,136,0.1); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.3); }
 
 .exp-period {
   font-family: var(--font-mono);
@@ -136,7 +105,6 @@
   flex-direction: column;
   gap: 0.65rem;
 }
-
 .exp-point {
   display: flex;
   gap: 0.6rem;
@@ -144,27 +112,19 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
-
 .exp-arrow {
   font-size: 1.1rem;
   line-height: 1.5;
   flex-shrink: 0;
 }
-
-.exp-arrow--cyan {
-  color: var(--neon-cyan);
-}
-
-.exp-arrow--green {
-  color: var(--neon-green);
-}
+.exp-arrow--cyan { color: var(--neon-cyan); }
+.exp-arrow--green { color: var(--neon-green); }
 
 @media (max-width: 600px) {
-  .exp-card-top {
-    flex-direction: column;
-  }
-
-  .exp-meta {
-    align-items: flex-start;
-  }
+  .experience { padding: 4rem 1.25rem; }
+  .exp-card-top { flex-direction: column; }
+  .exp-meta { align-items: flex-start; }
+  .exp-card { padding: 1.25rem; }
+  .exp-item { grid-template-columns: 28px 1fr; gap: 1rem; }
+  .exp-point { font-size: 0.82rem; }
 }

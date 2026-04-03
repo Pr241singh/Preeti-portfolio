@@ -59,7 +59,7 @@ const projects = [
   },
   {
     title: 'Deployment Automation Tool',
-    desc: 'A Python desktop application that automates file transfer and deployment workflows, including Gmail automation scripts — built during my Beacon Health internship.',
+    desc: 'A Python desktop application that automates file transfer and deployment workflows, including Gmail automation scripts built during my Beacon Health internship.',
     stack: ['Python', 'Tkinter', 'Automation', 'Gmail API'],
     live: null,
     github: 'https://github.com/Pr241singh/Deployment-automation-tool-',
