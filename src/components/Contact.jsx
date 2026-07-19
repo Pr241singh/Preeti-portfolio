@@ -11,13 +11,13 @@ export default function Contact() {
         <div className="contact-layout">
           <div className="contact-left">
             <p className="contact-intro">
-              I'm currently open to new opportunities — internships, freelance projects, 
-              or full-time roles. Whether you have a project in mind or just want to connect, 
+              I'm currently open to new opportunities — internships, freelance projects,
+              or full-time roles. Whether you have a project in mind or just want to connect,
               my inbox is always open.
             </p>
 
             <div className="contact-links">
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ps7379791@gmail.com" className="contact-card contact-card--cyan">
+              <a href="mailto:ps7379791@gmail.com" className="contact-card contact-card--cyan">
                 <div className="contact-card-icon">✉</div>
                 <div>
                   <p className="contact-card-label">Email</p>
@@ -60,11 +60,13 @@ export default function Contact() {
               </div>
               <div className="terminal-body">
                 <p className="t-line"><span className="t-prompt">$</span> whoami</p>
-                <p className="t-output">Preeti Singh — Full-Stack Developer</p>
+                <p className="t-output">Preeti Singh — Full-Stack & Android Developer</p>
                 <p className="t-line"><span className="t-prompt">$</span> cat status.txt</p>
                 <p className="t-output">🟢 Open to opportunities</p>
-                <p className="t-line"><span className="t-prompt">$</span> cat skills.txt</p>
-                <p className="t-output">MERN · Python · Socket.io · OCI</p>
+                <p className="t-line"><span className="t-prompt">$</span> cat stack.txt</p>
+                <p className="t-output">MERN · TypeScript · Kotlin · OCI</p>
+                <p className="t-line"><span className="t-prompt">$</span> cat highlights.txt</p>
+                <p className="t-output">4 Internships · 8+ Projects · GSSoC 2026</p>
                 <p className="t-line"><span className="t-prompt">$</span> cat education.txt</p>
                 <p className="t-output">B.Tech CSE @ KIIT (2025–2029)</p>
                 <p className="t-line"><span className="t-prompt">$</span> <span className="t-cursor">_</span></p>

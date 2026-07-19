@@ -5,7 +5,7 @@ const skillGroups = [
     label: 'Frontend',
     icon: '⬡',
     color: 'cyan',
-    skills: ['React.js', 'JavaScript ES6+', 'HTML5', 'CSS3', 'Bootstrap', 'Responsive Design', 'REST API Integration']
+    skills: ['React.js', 'JavaScript ES6+', 'TypeScript', 'HTML5', 'CSS3', 'Bootstrap', 'Responsive Design', 'REST API Integration']
   },
   {
     label: 'Backend',
@@ -17,25 +17,25 @@ const skillGroups = [
     label: 'Languages',
     icon: '⬡',
     color: 'purple',
-    skills: ['JavaScript', 'Python', 'Java (OOP)', 'DSA Fundamentals']
+    skills: ['JavaScript', 'TypeScript', 'Python', 'Java (OOP)', 'Kotlin', 'DSA Fundamentals']
   },
   {
     label: 'Tools & Cloud',
     icon: '⬡',
     color: 'cyan',
-    skills: ['Git & GitHub', 'Clerk Authentication', 'Cloudinary API', 'Oracle Cloud (OCI)', 'Vercel', 'Tkinter']
+    skills: ['Git & GitHub', 'Clerk Authentication', 'Cloudinary API', 'Oracle Cloud (OCI)', 'Vercel', 'Tkinter', 'Android SDK']
   },
   {
-    label: 'DSA',
+    label: 'DSA & Problem Solving',
     icon: '⬡',
     color: 'green',
-    skills: ['Arrays', 'Linked Lists', 'Stacks & Queues', 'Sorting Algorithms', '100+ LeetCode Problems']
+    skills: ['Arrays', 'Linked Lists', 'Stacks & Queues', 'Sorting Algorithms', '100+ LeetCode Problems', '100 Days LeetCode Badge']
   },
   {
-    label: 'AI & Others',
+    label: 'Soft Skills',
     icon: '⬡',
     color: 'purple',
-    skills: ['AI/ML Fundamentals', 'Supervised Learning', 'Data Preprocessing', 'Automation Scripting', 'Version Control Workflows']
+    skills: ['Leadership', 'Problem-Solving', 'Team Player', 'Communication', 'Adaptability', 'Open Source Contribution']
   }
 ]
 
@@ -46,10 +46,9 @@ export default function Skills() {
         <div className="section-tag">// 02. capabilities</div>
         <h2 className="section-title">Technical <span>Skills</span></h2>
         <div className="section-divider" />
-
         <div className="skills-grid">
           {skillGroups.map((group, i) => (
-            <div key={i} className={`skill-card skill-card--${group.color}`} style={{ animationDelay: `${i * 0.1}s` }}>
+            <div key={i} className={`skill-card skill-card--${group.color}`}>
               <div className="skill-card-header">
                 <span className={`skill-icon skill-icon--${group.color}`}>{group.icon}</span>
                 <h3 className="skill-card-title">{group.label}</h3>
@@ -57,8 +56,7 @@ export default function Skills() {
               <ul className="skill-list">
                 {group.skills.map((s, j) => (
                   <li key={j} className="skill-item">
-                    <span className="skill-dot" />
-                    {s}
+                    <span className="skill-dot" />{s}
                   </li>
                 ))}
               </ul>

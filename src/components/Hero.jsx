@@ -1,7 +1,20 @@
 import { useEffect, useState } from 'react'
 import './Hero.css'
 
-const roles = ['Full-Stack Developer', 'MERN Stack Engineer', 'Frontend Intern @ Beacon Health', 'UI/UX Enthusiast']
+const roles = ['Full-Stack Developer', 'MERN Stack Engineer', 'Android Developer', 'Open Source Contributor', 'Software Engineer Intern @ Dipa Poros']
+
+const tracks = [
+  { dot: 'cyan',   label: 'MERN Stack',        sub: 'React · Node · MongoDB · Express' },
+  { dot: 'green',  label: 'Android Dev',        sub: 'Kotlin · Android SDK · Play Store' },
+  { dot: 'purple', label: 'Open Source',        sub: 'Rocket.Chat · GSSoC 2026' },
+  { dot: 'yellow', label: 'Oracle AI Certified',sub: 'OCI AI Foundation 2025' },
+]
+
+const circles = [
+  { label: 'FULL STACK', sub: 'MERN · REST APIs', color: '#00f5ff', cx: 50, cy: 32, r: 28 },
+  { label: 'ANDROID',    sub: 'Kotlin · SDK',     color: '#bf5fff', cx: 32, cy: 62, r: 24 },
+  { label: 'AI / ML',    sub: 'IBM · Python',     color: '#00ff88', cx: 68, cy: 65, r: 22 },
+]
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
@@ -11,7 +24,6 @@ export default function Hero() {
   useEffect(() => {
     const current = roles[roleIndex]
     let timeout
-
     if (typing) {
       if (displayed.length < current.length) {
         timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60)
@@ -26,7 +38,6 @@ export default function Hero() {
         setTyping(true)
       }
     }
-
     return () => clearTimeout(timeout)
   }, [displayed, typing, roleIndex])
 
@@ -36,27 +47,25 @@ export default function Hero() {
       <div className="hero-glow hero-glow-2" />
 
       <div className="hero-inner">
+        {/* LEFT — content */}
         <div className="hero-content">
           <p className="hero-greeting">
             <span className="mono-bracket">&gt;</span> Hello, World! I'm
           </p>
-
           <h1 className="hero-name">
             Preeti<br /><span className="name-accent">Singh</span>
           </h1>
-
           <div className="hero-role">
             <span className="role-text">{displayed}</span>
             <span className="cursor">|</span>
           </div>
-
           <p className="hero-bio">
-            Full-Stack Developer building scalable MERN stack applications real-time systems,
-            SaaS tools, and automation workflows. Currently crafting responsive UIs at{' '}
-            <span className="highlight">Beacon Health</span>. Oracle Cloud AI Certified &amp;
-            Infosys Pragati Scholar.
+            Full-Stack &amp; Android Developer building scalable MERN apps, real-time
+            systems, and production-grade tools. Currently at{' '}
+            <span className="highlight">Dipa Poros</span> &amp;{' '}
+            <span className="highlight">Rocket.Chat</span> contributor.
+            Oracle Cloud AI Certified · Infosys Pragati Scholar · GSSoC 2026.
           </p>
-
           <div className="hero-cta">
             <a href="#projects" className="btn-neon" onClick={e => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }}>
               View Projects <span>→</span>
@@ -65,41 +74,69 @@ export default function Hero() {
               Get In Touch
             </a>
           </div>
-
           <div className="hero-stats">
-            <div className="stat">
-              <span className="stat-num">6+</span>
-              <span className="stat-label">Projects Built</span>
-            </div>
+            <div className="stat"><span className="stat-num">8+</span><span className="stat-label">Projects</span></div>
             <div className="stat-divider" />
-            <div className="stat">
-              <span className="stat-num">2</span>
-              <span className="stat-label">Internships</span>
-            </div>
+            <div className="stat"><span className="stat-num">4</span><span className="stat-label">Internships</span></div>
             <div className="stat-divider" />
-            <div className="stat">
-              <span className="stat-num">5+</span>
-              <span className="stat-label">Certifications</span>
-            </div>
+            <div className="stat"><span className="stat-num">8+</span><span className="stat-label">Achievements</span></div>
+            <div className="stat-divider" />
+            <div className="stat"><span className="stat-num">2</span><span className="stat-label">Android Apps</span></div>
           </div>
         </div>
 
+        {/* RIGHT — reference-style graphic */}
         <div className="hero-visual">
-          <div className="avatar-ring">
-            <div className="avatar-ring-2" />
-            <div className="avatar-core">
-              <span className="avatar-initials">PS</span>
-              <div className="avatar-tag">B.Tech CSE</div>
+          <div className="visual-card">
+            {/* Header row */}
+            <div className="vc-header">
+              <span className="vc-title">SKILL PILLARS · ACTIVE TRACKS</span>
+              <span className="vc-live"><span className="live-dot" />Live</span>
             </div>
-          </div>
-          <div className="floating-badge badge-1">
-            <span className="badge-dot" />MERN Stack
-          </div>
-          <div className="floating-badge badge-2">
-            <span className="badge-dot green" />Oracle Certified
-          </div>
-          <div className="floating-badge badge-3">
-            <span className="badge-dot purple" />Socket.io
+
+            <div className="vc-body">
+              {/* Left — overlapping circles */}
+              <div className="vc-circles">
+                <svg viewBox="0 0 100 100" className="circles-svg">
+                  <defs>
+                    {circles.map((c, i) => (
+                      <radialGradient key={i} id={`grad${i}`} cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor={c.color} stopOpacity="0.18" />
+                        <stop offset="100%" stopColor={c.color} stopOpacity="0.04" />
+                      </radialGradient>
+                    ))}
+                  </defs>
+                  {circles.map((c, i) => (
+                    <g key={i}>
+                      <circle cx={c.cx} cy={c.cy} r={c.r} fill={`url(#grad${i})`} stroke={c.color} strokeWidth="0.6" strokeOpacity="0.6" />
+                      <text x={c.cx} y={c.cy - 3} textAnchor="middle" fill={c.color} fontSize="5.5" fontWeight="700" fontFamily="'Syne',sans-serif" letterSpacing="0.3">{c.label}</text>
+                      <text x={c.cx} y={c.cy + 5} textAnchor="middle" fill={c.color} fontSize="3.5" fontOpacity="0.7" fontFamily="monospace">{c.sub}</text>
+                    </g>
+                  ))}
+                </svg>
+              </div>
+
+              {/* Right — tracks list */}
+              <div className="vc-tracks">
+                <p className="vc-tracks-label">ACTIVE TRACKS</p>
+                {tracks.map((t, i) => (
+                  <div key={i} className="vc-track-item">
+                    <span className={`track-dot track-dot--${t.dot}`} />
+                    <div>
+                      <p className="track-name">{t.label}</p>
+                      <p className="track-sub">{t.sub}</p>
+                    </div>
+                  </div>
+                ))}
+                <a
+                  href="#skills"
+                  className="vc-see-all"
+                  onClick={e => { e.preventDefault(); document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }) }}
+                >
+                  See all skills →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

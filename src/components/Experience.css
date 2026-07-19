@@ -128,3 +128,11 @@
   .exp-item { grid-template-columns: 28px 1fr; gap: 1rem; }
   .exp-point { font-size: 0.82rem; }
 }
+
+.exp-stack {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}

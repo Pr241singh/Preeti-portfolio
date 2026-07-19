@@ -26,7 +26,6 @@ export default function Navbar() {
           <span className="logo-name">PS</span>
           <span className="logo-bracket">/&gt;</span>
         </div>
-
         <ul className="nav-links">
           {links.map((link, i) => (
             <li key={i}>
@@ -36,14 +35,12 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           <span className={menuOpen ? 'open' : ''}></span>
           <span className={menuOpen ? 'open' : ''}></span>
           <span className={menuOpen ? 'open' : ''}></span>
         </button>
       </div>
-
       {menuOpen && (
         <div className="mobile-menu">
           {links.map((link, i) => (
