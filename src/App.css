@@ -27,7 +27,7 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-display);
-  overflow-x: hidden;
+  overflow-x: clip;
   cursor: default;
 }
 

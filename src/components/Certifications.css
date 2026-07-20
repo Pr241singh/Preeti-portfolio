@@ -112,13 +112,9 @@
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background: rgba(0,0,0,0.85) !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(4, 6, 12, 0.97) !important;
   z-index: 99999 !important;
   display: flex !important;
   align-items: center !important;
