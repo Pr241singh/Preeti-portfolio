@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import './Certifications.css'
 
 const certs = [
@@ -22,7 +23,7 @@ const certs = [
     type: 'Certification',
     proof: null,
     proofLabel: 'GFG Full Stack Certificate',
-    description: 'Comprehensive certification covering MongoDB, Express.js, React.js, and Node.js — full MERN stack development from fundamentals to deployment.'
+    description: 'Comprehensive certification covering MongoDB, Express.js, React.js, and Node.js — full MERN stack from fundamentals to deployment.'
   },
   {
     title: 'Artificial Intelligence Fundamentals',
@@ -59,9 +60,59 @@ const achievements = [
   { icon: '🏅', text: '100 Days LeetCode Badge', sub: 'Consistent problem solving — 100+ problems solved' },
 ]
 
+function Modal({ cert, onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [onClose])
+
+  return createPortal(
+    <div className="modal-overlay" onClick={onClose}>
+      <div className={'modal modal--' + cert.color} onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>✕</button>
+
+        <div className="modal-header">
+          <span className={'modal-icon modal-icon--' + cert.color}>{cert.icon}</span>
+          <div className="modal-header-text">
+            <span className={'cert-type cert-type--' + cert.color}>{cert.type}</span>
+            <h2 className="modal-title">{cert.title}</h2>
+            <p className="modal-subtitle">{cert.subtitle}</p>
+            <p className="modal-issuer">Issued by <strong>{cert.issuer}</strong></p>
+          </div>
+        </div>
+
+        <p className="modal-description">{cert.description}</p>
+
+        <div className="modal-proof-area">
+          <p className="proof-label">
+            <span className={'proof-dot proof-dot--' + cert.color} />
+            {cert.proofLabel}
+          </p>
+          {cert.proof ? (
+            <img src={cert.proof} alt={cert.proofLabel} className="proof-image" />
+          ) : (
+            <div className="proof-placeholder">
+              <div className="placeholder-icon">🖼</div>
+              <p className="placeholder-text">Certificate image coming soon</p>
+              <p className="placeholder-sub">
+                Set <code>proof: '/certs/filename.png'</code> in Certifications.jsx
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>,
+    document.body
+  )
+}
+
 export default function Certifications() {
   const [selected, setSelected] = useState(null)
-  const close = () => setSelected(null)
 
   return (
     <section id="certifications" className="certifications">
@@ -79,15 +130,15 @@ export default function Certifications() {
           {certs.map((cert, i) => (
             <div
               key={i}
-              className={"cert-card cert-card--" + cert.color}
+              className={'cert-card cert-card--' + cert.color}
               onClick={() => setSelected(cert)}
               role="button"
               tabIndex={0}
               onKeyDown={e => e.key === 'Enter' && setSelected(cert)}
             >
               <div className="cert-top">
-                <span className={"cert-icon cert-icon--" + cert.color}>{cert.icon}</span>
-                <span className={"cert-type cert-type--" + cert.color}>{cert.type}</span>
+                <span className={'cert-icon cert-icon--' + cert.color}>{cert.icon}</span>
+                <span className={'cert-type cert-type--' + cert.color}>{cert.type}</span>
               </div>
               <h3 className="cert-title">{cert.title}</h3>
               <p className="cert-subtitle">{cert.subtitle}</p>
@@ -97,7 +148,7 @@ export default function Certifications() {
           ))}
         </div>
 
-        <h3 className="creds-sub-title" style={{marginTop: '3rem'}}>Achievements & Recognition</h3>
+        <h3 className="creds-sub-title" style={{ marginTop: '3rem' }}>Achievements & Recognition</h3>
         <div className="achievements-grid">
           {achievements.map((a, i) => (
             <div key={i} className="achievement-item">
@@ -111,39 +162,7 @@ export default function Certifications() {
         </div>
       </div>
 
-      {/* Simple modal — original style */}
-      {selected && (
-        <div className="modal-overlay" onClick={close}>
-          <div className={"modal modal--" + selected.color} onClick={e => e.stopPropagation()}>
-            <button className="modal-close" onClick={close}>✕</button>
-            <div className="modal-header">
-              <span className={"modal-icon modal-icon--" + selected.color}>{selected.icon}</span>
-              <div className="modal-header-text">
-                <span className={"cert-type cert-type--" + selected.color}>{selected.type}</span>
-                <h2 className="modal-title">{selected.title}</h2>
-                <p className="modal-subtitle">{selected.subtitle}</p>
-                <p className="modal-issuer">Issued by <strong>{selected.issuer}</strong></p>
-              </div>
-            </div>
-            <p className="modal-description">{selected.description}</p>
-            <div className="modal-proof-area">
-              <p className="proof-label">
-                <span className={"proof-dot proof-dot--" + selected.color} />
-                {selected.proofLabel}
-              </p>
-              {selected.proof ? (
-                <img src={selected.proof} alt={selected.proofLabel} className="proof-image" />
-              ) : (
-                <div className="proof-placeholder">
-                  <div className="placeholder-icon">🖼</div>
-                  <p className="placeholder-text">Certificate image coming soon</p>
-                  <p className="placeholder-sub">Upload your image and set <code>proof: '/certs/filename.png'</code></p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      {selected && <Modal cert={selected} onClose={() => setSelected(null)} />}
     </section>
   )
 }
